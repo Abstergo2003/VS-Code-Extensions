@@ -1,0 +1,61 @@
+{
+  "name": "abstergos-codelibrary",
+  "displayName": "Code Library",
+  "publisher": "Abstergo",
+  "description": "Easy way to save your important code for later. Tired of searching for that one time you encountered problem in code, to get the solution? No more, with just one click all you code is stored in organized manner, accesible from everywhere in VS Code.",
+  "version": "0.2.0",
+  "engines": {
+    "vscode": "^1.94.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "media/icon.png",
+  "activationEvents": [],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+      "command": "abstergos-codelibrary.openlibrary",
+      "title": "Open Code Library"
+      },
+      {
+        "command": "abstergos-codelibrary.saveAsBundle",
+        "title": "Save as Bundle"
+      },
+      {
+        "command": "abstergos-codelibrary.saveAsScript",
+        "title": "Save as Script"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "abstergos-codelibrary.saveAsBundle",
+          "when": "resourceScheme == 'file' && resourceExtname",
+          "group": "5_cutcopypaste"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "abstergos-codelibrary.saveAsScript",
+          "when": "editorHasSelection",
+          "group": "9_cutcopypaste"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.94.0",
+    "@types/mocha": "^10.0.8",
+    "@types/node": "20.x",
+    "eslint": "^9.11.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}

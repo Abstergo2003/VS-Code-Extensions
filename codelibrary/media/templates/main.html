@@ -1,0 +1,139 @@
+<template id="bundle">
+    <style>
+        .bundle {
+            width: calc(100% - 10px);
+            height: 40px;
+            display: block;
+            margin: 0;
+            margin-top: 10px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 10px;
+            color: white;
+            overflow: hidden;
+        }
+        .bundle .info {
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .bundle .info img {
+            height: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+        .bundle .info table {
+            margin: 0;
+            padding: 0;
+        }
+        .bundle .info table td:nth-child(1) {
+            width: -moz-fit-content;
+            width: fit-content;
+            border-right: 0;
+        }
+        .bundle .info table td:nth-child(2) {
+            padding-left: 15px;
+            width: 100%;
+        }
+        .bundle .item {
+            margin-left: 10px;
+        }
+
+        .info:hover {
+            background: rgba(211, 210, 210, 0.11);
+            background: linear-gradient(180deg, rgba(211, 210, 210, 0.11) 0%, rgba(255, 0, 0, 0) 100%);
+        }
+        .icon {
+            height: 20px;
+            width: 20px;
+            background-image: url(https://file%2B.vscode-resource.vscode-cdn.net/e%3A/archiwum/My%20Creations/vsCode%20Extensions/abstergos-codelibrary/media/folder-tar.png);
+        }
+    </style>
+    <div class="bundle">
+        <div class="info">
+            <table>
+                <tr>
+                    <td><div class="icon bundleIcon"></div></td>
+                    <td>@@{name}</td>
+                    <td><div class="icon arrow" id="indi"></div></td>
+                </tr>
+            </table>
+        </div>
+        <div class="items">
+
+        </div>
+    </div>
+</template>
+
+<template id="bundledItem">
+    <style>
+        .item {
+            margin-left: 20px;
+            display: block;
+            width: calc(100% - 20px - 10px);
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .item img {
+            height: 20px;
+        }
+        .item table {
+            margin: 0;
+            padding: 0;
+        }
+        .item table td:nth-child(1) {
+        width: -moz-fit-content;
+        width: fit-content;
+        border-right: 0;
+        }
+        .item table td:nth-child(2) {
+        padding-left: 15px;
+        width: 100%;
+        }
+        .item:hover {
+            background: rgba(211, 210, 210, 0.11);
+            background: linear-gradient(180deg, rgba(211, 210, 210, 0.11) 0%, rgba(255, 0, 0, 0) 100%);
+        }
+    </style>
+    <div class="item bundled" id="@@{bundleID}-@@{itemID}">
+        <table>
+            <tr>
+                <td><div class="icon" style="background-image: var(--@@{lang})"></div></td>
+                <td>@@{name}</td>
+            </tr>
+        </table>
+    </div>
+</template>
+<template id="freeItem">
+    <style>
+        .item {
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .item img {
+            height: 20px;
+        }
+        .item table {
+            margin: 0;
+            padding: 0;
+        }
+        .item table td:nth-child(1) {
+        width: -moz-fit-content;
+        width: fit-content;
+        border-right: 0;
+        }
+        .item table td:nth-child(2) {
+        padding-left: 15px;
+        width: 100%;
+        }
+        .item:hover {
+            background: rgba(211, 210, 210, 0.11);
+            background: linear-gradient(180deg, rgba(211, 210, 210, 0.11) 0%, rgba(255, 0, 0, 0) 100%);
+        }
+    </style>
+    <div class="item" id="@@{itemID}">
+        <table>
+            <tr>
+                <td><div class="icon" style="background-image: var(--@@{lang});"></div></td>
+                <td>@@{name}</td>
+            </tr>
+        </table>
+    </div>
+</template>

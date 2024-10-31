@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Library</title>
+    <script src="server.uri/templateImporter.js"></script>
+    <link rel="icon" href="server.uri/icon.ico" type="image/x-icon">
+    <style> /*global styles*/
+        * {
+            --arrowLeft: url(server.uri/arrows_circle_left.svg);
+            --remove: url(server.uri/arrows_circle_remove.svg);
+            --bundleIcon: url(server.uri/folder-tar.png);
+            --amazon: url(server.uri/icons/amazon.svg);
+            --android: url(server.uri/icons/android.svg);
+            --angular: url(server.uri/icons/angular.svg);
+            --ansible: url(server.uri/icons/ansible.svg);
+            --azure: url(server.uri/icons/azure.svg);
+            --bash: url(server.uri/icons/bash.svg);
+            --bitbucket: url(server.uri/icons/bitbucket.svg);
+            --bitbucketV2: url(server.uri/icons/bitbucketV2.svg);
+            --boostrap: url(server.uri/icons/boostrap.svg);
+            --cs: url(server.uri/icons/c#.svg);
+            --cpp: url(server.uri/icons/c++.svg);
+            --c: url(server.uri/icons/c.svg);
+            --cassandra: url(server.uri/icons/cassandra.svg);
+            --codeigniter: url(server.uri/icons/codeigniter.svg);
+            --css: url(server.uri/icons/css.svg);
+            --dart: url(server.uri/icons/dart.svg);
+            --deno: url(server.uri/icons/deno.svg);
+            --django: url(server.uri/icons/django.svg);
+            --docker: url(server.uri/icons/docker.svg);
+            --firebase: url(server.uri/icons/firebase.svg);
+            --flask: url(server.uri/icons/flask.svg);
+            --gcloud: url(server.uri/icons/gcloud.svg);
+            --git: url(server.uri/icons/git.svg);
+            --github: url(server.uri/icons/github.svg);
+            --gitkraken: url(server.uri/icons/gitkraken.svg);
+            --gitlab: url(server.uri/icons/gitlab.svg);
+            --go: url(server.uri/icons/go.svg);
+            --haskell: url(server.uri/icons/haskell.svg);
+            --heroku: url(server.uri/icons/heroku.svg);
+            --html: url(server.uri/icons/html.svg);
+            --java: url(server.uri/icons/java.svg);
+            --javascript: url(server.uri/icons/javascript.svg);
+            --jquery: url(server.uri/icons/jquery.svg);
+            --json: url(server.uri/icons/json.svg);
+            --kotlin: url(server.uri/icons/kotlin.svg);
+            --laravel: url(server.uri/icons/laravel.svg);
+            --materialize: url(server.uri/icons/materialize.svg);
+            --mongodb: url(server.uri/icons/mongodb.svg);
+            --mysql: url(server.uri/icons/mysql.svg);
+            --nodejs: url(server.uri/icons/nodejs.svg);
+            --npm: url(server.uri/icons/npm.svg);
+            --oracle: url(server.uri/icons/oracle.svg);
+            --php: url(server.uri/icons/php.png);
+            --postgresql: url(server.uri/icons/postgresql.svg);
+            --python: url(server.uri/icons/python.svg);
+            --rails: url(server.uri/icons/rails.svg);
+            --react: url(server.uri/icons/react.svg);
+            --redis: url(server.uri/icons/redis.svg);
+            --redux: url(server.uri/icons/redux.svg);
+            --ruby: url(server.uri/icons/ruby.svg);
+            --rust: url(server.uri/icons/rust.svg);
+            --spring: url(server.uri/icons/spring.svg);
+            --terraform: url(server.uri/icons/terraform.png);
+            --typescript: url(server.uri/icons/typescript.svg);
+            --vuejs: url(server.uri/icons/vuejs.svg);
+        }
+    </style>
+    <link rel="stylesheet" href="server.uri/style.css">
+    <style>
+        pre code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px}.hljs-comment,.hljs-meta{color:#565f89}.hljs-deletion,.hljs-doctag,.hljs-regexp,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-tag,.hljs-template-tag,.hljs-variable.language_{color:#f7768e}.hljs-link,.hljs-literal,.hljs-number,.hljs-params,.hljs-template-variable,.hljs-type,.hljs-variable{color:#ff9e64}.hljs-attribute,.hljs-built_in{color:#e0af68}.hljs-keyword,.hljs-property,.hljs-subst,.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_{color:#7dcfff}.hljs-selector-tag{color:#73daca}.hljs-addition,.hljs-bullet,.hljs-quote,.hljs-string,.hljs-symbol{color:#9ece6a}.hljs-code,.hljs-formula,.hljs-section{color:#7aa2f7}.hljs-attr,.hljs-char.escape_,.hljs-keyword,.hljs-name,.hljs-operator{color:#bb9af7}.hljs-punctuation{color:#c0caf5}.hljs{background:#1a1b26;color:#9aa5ce}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}
+    </style>
+    <script src="server.uri/highlight/highlight.min.js"></script>
+</head>
+<body>
+    <script>
+        const vscode = acquireVsCodeApi();
+
+        function requestFile(path) {
+            // Send a message to the extension
+            vscode.postMessage({
+                command: 'readFile',
+                filePath: path
+            });
+        }
+
+
+    </script>
+    <table>
+        <tr>
+            <td>
+                <div style="padding: 10px;">
+                    <!-- <input type="text"><br> -->
+                    <h2>Shelf</h2>
+                    <div class="holder"></div>
+                </div>
+            </td>
+            <td style="max-width: 80vw !important; width: 80vw;">
+                <div style="padding: 10px;">
+                    <h2>Reading Desk</h2>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name"><br>
+                    <br>
+                    <label for="">Tags</label>
+                    <div class="input-like">
+                        <div class="tags"></div>
+                        <input type="text" id="tags" onkeypress="addTag(event)">
+                    </div>
+                    <pre><code contenteditable="true" class="nohighlight"></code></pre>
+                    <button id="save" onclick="saveContent()">Save</button>
+                    <button style="background-color: rgb(172, 4, 4);" onclick="deleteScript()">Delete</button>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script defer>
+        let typingTimer; // Timer identifier
+        const typingDelay = 1000;
+        let inspectedBundleID;
+
+        function handleInput() {
+            clearTimeout(typingTimer); // Clear the previous timer
+  // Start a new timer that will run `processInput` after 5 seconds
+            typingTimer = setTimeout(updateData, typingDelay);
+        }
+
+        function updateData() {
+            const name = document.querySelector("#name").value;
+            inspected.name = name;
+            if (inspectedBundleID != null) {
+                document.getElementById(`${inspectedBundleID}-${inspected.id}`).querySelectorAll("td")[1].innerText = name;
+            } else {
+                document.getElementById(`${inspected.id}`).querySelectorAll("td")[1].innerText = name;
+            }
+            vscode.postMessage({
+                command: 'saveMainData',
+                data: JSON.stringify(scripts)
+            });
+        }
+
+        function saveContent() {
+            const content = document.querySelector("code").textContent;
+            vscode.postMessage({
+                command: 'saveScriptContent',
+                id: inspected.id,
+                content: content
+            })
+        }
+
+        function deleteScript() {
+            if (inspectedBundleID != null) {
+                const result = scripts.find(child => {
+                    return child.id === inspectedBundleID;
+                });
+                const script = result.children.filter(child => {
+                    return child.id != inspected.id;
+                });
+                result.children = script;
+                document.getElementById(`${inspectedBundleID}-${inspected.id}`).parentNode.remove();
+            } else {
+                const result = scripts.filter(child => {
+                    return child.id != inspected.id;
+                });
+                scripts = result;
+                document.getElementById(inspected.id).parentNode.remove();
+            }
+            document.querySelector("code").textContent = "";
+            document.querySelector("#name").value = "";
+            document.querySelector(".tags").innerHTML = "";
+            vscode.postMessage({
+                command: 'saveMainData',
+                data: JSON.stringify(scripts)
+            });
+            vscode.postMessage({
+                command: 'deleteFile',
+                fileName: `/items/${inspected.id}.txt`
+            });
+        }
+
+        document.getElementById("name").addEventListener("input", handleInput);
+
+        function addTag(event) {
+            if (event.keyCode == 13) {
+                let input = document.querySelector("#tags")
+                const tagContent = input.value;
+                input.value = "";
+                let tag = document.createElement("div");
+                tag.classList.add("tag");
+                tag.textContent = tagContent;
+                let img = document.createElement("div");
+                img.classList.add("removeTag");
+                img.classList.add("icon");
+                img.onclick = (e) => {
+                    modifyTags(e)
+                }
+                tag.append(img);
+                document.querySelector(".tags").append(tag);
+                inspected.tags.push(tagContent);
+            }
+            handleInput();
+        }
+
+        function modifyTags(e) { //deletes tag
+            const tags = document.querySelectorAll(".tag");
+            let tagList = [];
+            for (tag of tags) {
+                if (tag.textContent != e.target.parentNode.textContent) {
+                    tagList.push(tag.textContent);
+                }
+            }
+            inspected.tags = tagList;
+            e.target.parentNode.remove();
+            handleInput();
+        }
+
+        let previousLang = 'nohighlight';
+        let inspected;
+        document.addEventListener("click", (e)=>{
+            let target = e.target;
+            let i = 0;
+            while (i < 6) {
+                if (target.classList[0] == "bundle" || target.classList[0] == "item") {
+                    break;
+                }
+                i++;
+                target = target.parentNode;
+            }
+            if (target.classList == undefined || target.classList.length == 0 || target.classList[0] != "bundle" && target.classList[0] != "item") {
+                return 0;
+            }
+            if (target.classList[0] == "bundle") {
+                if (target.style.height == "auto") {
+                    target.style.height = "30px";
+                    target.querySelector("#indi").style.transform = "rotate(0deg)";
+                } else {
+                    target.style.height = "auto";
+                    target.querySelector("#indi").style.transform = "rotate(90deg)";
+                }
+            } else if (target.classList[0] == "item") {
+                const id = target.id;
+                if (id.indexOf("-") != -1) {
+                    const bundleID = id.slice(0, id.indexOf("-"));
+                    const itemID = id.slice(id.indexOf("-")+1);
+                    findCode(itemID, bundleID);
+                } else {
+                    findCode(id);
+                }
+            }
+
+        })
+
+        let scripts = [];
+        let inspectedContent = "";
+
+        function findCode(ID, bundleID = null) {
+            if (bundleID) {
+                const result = scripts.find(child => {
+                    return child.id === bundleID;
+                });
+                const script = result.children.find(child => {
+                    return child.id === ID;
+                });
+                inspected = script;
+                inspectedBundleID = result.id;
+                inspectCode(script);
+            } else {
+                const result = scripts.find(child => {
+                    return child.id === ID;
+                });
+                inspected = result;
+                inspectedBundleID = null;
+                inspectCode(result);
+            }
+        }
+
+        async function inspectCode(obj) {
+            document.querySelector("#name").value = obj.name;
+            vscode.postMessage({
+                command: 'getScriptContent',
+                id: obj.id
+            });
+            document.querySelector("code").classList.remove(previousLang);
+            document.querySelector("code").classList.remove("language-xml");
+            document.querySelector("code").setAttribute("data-highlighted", "");
+            document.querySelector("code").classList.add(`language-${obj.lang}`);
+            previousLang = `language-${obj.lang}`;
+            document.querySelector(".tags").innerHTML = "";
+            for (tag of obj.tags) {
+                let tagEL = document.createElement("div");
+                tagEL.classList.add("tag");
+                tagEL.textContent = tag;
+                let img = document.createElement("div");
+                img.classList.add("removeTag");
+                img.classList.add("icon");
+                img.onclick = (e) => {
+                    modifyTags(e)
+                }
+                tagEL.append(img);
+                document.querySelector(".tags").append(tagEL);
+            }
+        }
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+                if (message.command === 'mainData') {
+                    loadLibrary(message.content);
+                } else if (message.command == "scriptContent") {
+                    document.querySelector("code").textContent = message.content;
+                    inspectedContent = message.content;
+                    document.querySelectorAll('pre code').forEach((el) => {
+                        hljs.highlightElement(el, );
+                    });
+                }
+        });
+
+        function loadLibrary(txtOBJ) {
+            scripts = JSON.parse(txtOBJ);
+
+            let holder = document.querySelector(".holder");
+            for (var script of scripts) {
+                if (script.type == "bundle") {
+                    let bunlde = getElement(GLOBAL_TEMPLATES.bundle, {name: script.name, lang: script.lang}, script.id)
+                    let bundleHolder = bunlde.querySelector(".items");
+                    for (var child of script.children) {
+                        let item = getElement(GLOBAL_TEMPLATES.bundledItem, {
+                            name: child.name, 
+                            lang: child.lang, 
+                            bundleID: script.id, 
+                            itemID: child.id
+                        });
+                        bundleHolder.append(item);
+                    }
+                    holder.append(bunlde);
+                } else {
+                    let item = getElement(GLOBAL_TEMPLATES.freeItem, {
+                        name: script.name, 
+                        lang: script.lang,
+                        itemID: script.id
+                    });
+                    holder.append(item);
+                }
+            }
+        }
+
+        async function startLoadingLibrary() {
+            await importTemplates("server.uri/templates/main.html");
+
+            vscode.postMessage({
+                command: 'getMainData',
+            });
+        }
+        startLoadingLibrary();
+    </script>
+</body>
+</html>
