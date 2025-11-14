@@ -3,7 +3,7 @@
   "displayName": "JSON Highlights",
   "description": "",
   "publisher": "Abstergo",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "engines": {
     "vscode": "^1.95.0"
   },
@@ -11,7 +11,9 @@
     "Other"
   ],
   "activationEvents": [
-      "*"
+    "onLanguage:json",
+    "onLanguage:jsonc",
+    "onDidChangeTextDocument"
   ],
   "icon": "icon.png",
   "main": "./extension.js",
