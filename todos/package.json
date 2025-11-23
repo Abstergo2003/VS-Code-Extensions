@@ -1,14 +1,15 @@
 {
-  "name": "todos--",
-  "displayName": "todos##",
+  "name": "abstergoodos",
+  "displayName": "Todos##",
   "description": "Best way to save and view your todos",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "engines": {
     "vscode": "^1.106.0"
   },
   "categories": [
     "Other"
   ],
+  "publisher": "Abstergo",
   "icon": "icon.png",
   "activationEvents": [],
   "main": "./out/extension.js",
