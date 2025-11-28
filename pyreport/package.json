@@ -2,22 +2,35 @@
   "name": "pyreport",
   "displayName": "PyReport##",
   "description": "",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.106.0"
   },
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "icon": "icon.jpg",
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "pyreport.getVariables",
-        "title": "PyReport: Get Variables"
+        "title": "Generate PyReport",
+        "icon": "$(preview)"
       }
-    ]
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "pyreport.getVariables",
+          "when": "resourceExtname == .ipynb",
+          "group": "navigation"
+        }
+      ]
+    }
   },
   "extensionDependencies": [
     "ms-toolsai.jupyter"

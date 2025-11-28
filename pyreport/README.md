@@ -1,71 +1,150 @@
-# pyreport README
+# PyReport##
 
-This is the README for your extension "pyreport". After writing up a brief description, we recommend including the following sections.
+Extension converting your normal ipynb file into markdown report. Perfect for students running their calculations in python. Write any python operation, make any markdown cell, all will be included in final raport in neat organized way.
 
-## Features
+##### Code:
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+```python
+cos35 = math.cos(DegToRad(35))
+sin35 = math.sin(DegToRad(35))
 
-For example if there is an image subfolder under your extension project workspace:
+alpha = 35
+l = 0.5 * 1218 / cos35
+ld = 414 / cos35
+lg = l - ld
+e = 18.57
+la = e /10 / cos35
+lb = ld/100 - la
+q1 = 1.313
+q2 = 1.114
+Rb = ((q1 - q2) * 0.5 * la**2 + q2* 0.5* (ld/100)**2)/(ld/100)
+x = Rb / q2
+```
 
-\!\[feature X\]\(images/feature-x.png\)
+##### Result:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+$ cos35 = 0.8192 $ 
 
-## Requirements
+$ sin35 = 0.5736 $ 
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+$ \alpha = 35.0000 $ 
 
-## Extension Settings
+$ l = 0.5*1218/cos35 = 0.5 * 1218 / 0.8192 = 743.4517 $ 
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+$ ld = 414/cos35 = 414 / 0.8192 = 505.4007 $ 
 
-For example:
+$ lg = l-ld = 743.4517 - 505.4007 = 238.0510 $ 
 
-This extension contributes the following settings:
+$ e = 18.5700 $ 
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+$ la = e/10/cos35 = 18.5700 /10 / 0.8192 = 2.2670 $ 
 
-## Known Issues
+$ lb = ld/100-la = 505.4007/100 - 2.2670 = 2.7870 $ 
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+$ q1 = 1.3130 $ 
 
-## Release Notes
+$ q2 = 1.1140 $ 
 
-Users appreciate release notes as you update your extension.
+$ Rb = ((q1-q2)*0.5*la**2+q2*0.5*(ld/100)**2)/(ld/100) = ((1.3130 - 1.1140) * 0.5 * 2.2670**2 + 1.1140* 0.5* (505.4007/100)**2)/(505.4007/100) = 2.9163 $ 
 
-### 1.0.0
+$ x = Rb/q2 = 2.9163 / 1.1140 = 2.6178 $ 
 
-Initial release of ...
+## Features:
 
-### 1.0.1
+### Floor Index
+By following specific syntax you can automatically create floor syntax in your report:
 
-Fixed issue #.
+##### Code:
 
-### 1.1.0
+```python
+lol_lol = 1
+```
 
-Added features X, Y, and Z.
+##### Result:
 
----
+$ lol_{lol} = 1 $
 
-## Following extension guidelines
+### Markdown in code
+Since it is uncomfortable to swtich cells often you can write markdown in python cell
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+##### Code:
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+```python
+# md: * Some markdown text line 1 *
+# md: Some markdown text line 2
+lol_lol = 1
+```
 
-## Working with Markdown
+##### Result:
 
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
+*Some markdown text line 1* 
+Some markdown text line 2
 
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+$ lol_{lol} = 1 $
 
-## For more information
+### Commands:
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+* PyReport:table[\<tableName\>][row names]
 
-**Enjoy!**
+##### Code:
+
+```python
+# PyReport:table[test][test1, test2, test3]
+lol = [1,2,3]
+```
+
+##### Result:
+
+*lol* 
+
+| Item | Expression | Replaced | Value |
+|---|---|---|---|
+| test1 | 1 | 1 | 1 | 
+| test2 | 2 | 2 | 2 | 
+| test3 | 3 | 3 | 3 | 
+
+### Matrix Support with numpy
+
+##### Code:
+
+```python
+import numpy
+
+val1 = 1
+val2 = 2
+val3 = 3
+
+test = numpy.array([[val1, val1],[val2, val3]])
+
+test2 = test @ test
+```
+
+##### Result:
+
+$ val1 = 1.0000 $ 
+
+$ val2 = 2.0000 $ 
+
+$ val3 = 3.0000 $ 
+
+
+$$ test = \begin{pmatrix} 
+ val1 &  val1 \\ 
+ val2 &  val3 \\ 
+\end{pmatrix} = \begin{pmatrix} 
+ 1.0000 &  1.0000 \\ 
+ 2.0000 &  3.0000 \\ 
+\end{pmatrix} = \begin{pmatrix} 
+ 1 &  1 \\ 
+ 2 &  3 \\ 
+\end{pmatrix} $$
+$$ test2 = test * test = \begin{pmatrix} 
+ 1 &  1 \\ 
+ 2 &  3 \\ 
+\end{pmatrix} \cdot \begin{pmatrix} 
+ 1 &  1 \\ 
+ 2 &  3 \\ 
+\end{pmatrix} = \begin{pmatrix} 
+ 3 &  4 \\ 
+ 8 &  11 \\ 
+\end{pmatrix} $$
